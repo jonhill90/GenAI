@@ -1,0 +1,46 @@
+.DS_Store
+# Ignore Docker-related files
+docker-compose.override.yml
+.dockerignore
+Dockerfile
+docker-*.log
+docker-compose*.yml.bak
+docker-compose*.override.yml
+
+# Ignore Milvus data volumes
+volumes/
+volumes/*
+
+# Ignore Milvus logs
+milvus/logs/
+milvus/logs/*
+milvus/data/
+milvus/data/*
+
+# Ignore MinIO data
+minio_data/
+minio_data/*
+volumes/minio/
+volumes/minio/*
+
+# Ignore Etcd data
+volumes/etcd/
+volumes/etcd/*
+
+# Ignore temporary files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Ignore Python virtual environments if applicable
+venv/
+.env
+__pycache__/
