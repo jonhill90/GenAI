@@ -10,6 +10,8 @@ docker-compose*.override.yml
 # Ignore Milvus data volumes
 volumes/
 volumes/*
+!volumes/n8n/  # Exclude n8n data from being ignored
+!volumes/langflow/  # Exclude langflow data from being ignored
 
 # Ignore Milvus logs
 milvus/logs/
@@ -26,6 +28,18 @@ volumes/minio/*
 # Ignore Etcd data
 volumes/etcd/
 volumes/etcd/*
+
+# Ignore n8n data
+n8n_data/
+n8n_data/*
+volumes/n8n/
+volumes/n8n/*
+
+# Ignore Langflow data
+langflow_data/
+langflow_data/*
+volumes/langflow/
+volumes/langflow/*
 
 # Ignore temporary files
 *.swp

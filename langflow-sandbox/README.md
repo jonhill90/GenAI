@@ -1,29 +1,16 @@
-# 🚀 LangFlow + Milvus + Ollama - Docker Compose Setup
+# 🚀 LangFlow - Docker Compose Setup
 
-This repository provides a **Docker Compose** configuration to run **LangFlow**, **Milvus**, and **Ollama** together, enabling AI-powered applications with vector search capabilities.
+This repository provides a **Docker Compose** configuration to run **LangFlow**, a visual programming interface for building LLM applications.
 
 ## 📌 Overview
 
 This setup includes:
-- **Ollama**: A local LLM engine (connected via `OLLAMA_API_BASE`).
-- **LangFlow**: A visual programming interface for building LLM applications.
-- **Milvus**: A vector database for similarity search.
-- **ETCD**: Metadata store for Milvus.
-- **MinIO**: Object storage for Milvus.
+- **LangFlow**: A web-based interface for designing AI-powered applications.
+- **Persistent Storage**: Data is stored in `./langflow_data`.
 
 ## 🛠 Installation Guide
 
-### 1️⃣ Install Ollama
-
-Ollama must be installed and running on your local machine.  
-Download and install Ollama from [https://ollama.com](https://ollama.com).  
-After installation, verify that Ollama is running:
-
-```bash
-ollama run deepseek
-```
-
-### 2️⃣ Install Docker & Docker Compose
+### 1️⃣ Install Docker & Docker Compose
 
 If you haven't already, install Docker:
 
@@ -43,36 +30,33 @@ docker --version
 docker-compose --version
 ```
 
-### 3️⃣ Clone this Repository
+### 2️⃣ Clone this Repository
 
 ```bash
 git clone https://github.com/jonhill90/GenAI.git
 cd langflow-sandbox
 ```
 
-### 4️⃣ Start the Containers
+### 3️⃣ Start the Container
 
 ```bash
 docker-compose up -d
 ```
 
-This will start:
-- **LangFlow** at [http://localhost:7860](http://localhost:7860)
-- **Milvus** at `localhost:19530`
-- **MinIO Console** at [http://localhost:9001](http://localhost:9001)
-- **Ollama API** assumed to be running at `http://host.docker.internal:11434`
+This will start **LangFlow**, which will be accessible at:
+
+🔗 **LangFlow UI**: [http://localhost:7860](http://localhost:7860)
 
 ## 🛠 Configuration
 
 Modify **`docker-compose.yml`** if needed:
 
-- **LangFlow API Port:** Change `LANGFLOW_PORT=7860` if needed.
-- **Ollama API Connection:** Ensure `OLLAMA_API_BASE=http://host.docker.internal:11434` points to your Ollama instance.
-- **Milvus Storage:** Adjust MinIO and ETCD storage locations.
+- **Change API Port**: Modify `LANGFLOW_PORT=7860` in the environment variables.
+- **Persistent Storage**: The `./langflow_data` directory stores LangFlow data.
 
 ## 🔧 Stopping and Restarting
 
-To stop all containers:
+To stop the LangFlow container:
 
 ```bash
 docker-compose down
@@ -86,11 +70,7 @@ docker-compose up -d
 
 ## 🏗️ Managing Data
 
-- **Persistent Storage**: Data is stored in `./volumes` directory.
-- **Accessing MinIO**:  
-  - URL: [http://localhost:9001](http://localhost:9001)  
-  - User: `minioadmin`  
-  - Password: `minioadmin`
+- **Persistent Storage**: LangFlow data is stored in `./langflow_data`.
 
 ## 🧐 Troubleshooting
 
@@ -100,7 +80,7 @@ docker-compose up -d
 docker-compose logs -f langflow
 ```
 
-### ❓ Restart a Specific Container
+### ❓ Restart LangFlow
 
 ```bash
 docker-compose restart langflow
