@@ -11,6 +11,8 @@ services:
     environment:
       - LANGFLOW_PORT=7860
       - OLLAMA_API_BASE=http://host.docker.internal:11434  # Connect to native Ollama
+      - MILVUS_HOST=milvus-standalone
+      - MILVUS_PORT=19530
     volumes:
       - ./langflow_data:/data
     networks:
